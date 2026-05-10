@@ -1,0 +1,28 @@
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+pydantic==2.7.1
+ 
+# Data & ML core
+numpy==1.26.4
+pandas==2.2.2
+scipy==1.13.0
+scikit-learn==1.4.2
+ 
+# Collaborative filtering
+implicit==0.7.2          # ALS implicit feedback
+surprise==0.1            # SVD explicit ratings
+ 
+# NLP / Content-based
+sentence-transformers==2.7.0
+scikit-learn==1.4.2      # TF-IDF (already above)
+ 
+# Geo
+geopy==2.4.1
+ 
+# Persistence
+joblib==1.4.2
+ 
+# Dev / testing
+pytest==8.2.0
+httpx==0.27.0
+ 
