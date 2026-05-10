@@ -129,7 +129,7 @@ def mae(y_true: np.ndarray, y_pred: np.ndarray) -> float:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Métricas más allá de la exactitud
+# Métricas adicionales de diversidad y cobertura
 # ─────────────────────────────────────────────────────────────────────────────
 
 def intra_list_diversity(recommended: list,

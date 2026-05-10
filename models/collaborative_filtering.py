@@ -4,14 +4,9 @@ models/collaborative_filtering.py
 Filtrado colaborativo por factorización matricial.
 
 Implementa dos variantes:
-  1. SVDModel  – ratings EXPLÍCITOS via Surprise (SVD biased)
-  2. ALSModel  – feedback IMPLÍCITO via implicit (ALS)
+  1. SVDModel: ratings EXPLÍCITOS via Surprise (SVD biased)
+  2. ALSModel: feedback IMPLÍCITO via implicit (ALS)
 
-Interfaz común:
-  .fit(train_df, user2idx, biz2idx)
-  .predict(user_id, business_ids) → dict[business_id, score]
-  .top_n(user_id, n, exclude_seen) → list[business_id]
-  .save(path) / .load(path)
 """
 
 import logging
@@ -64,13 +59,13 @@ class SVDModel:
         self.biz2idx  = biz2idx
         self.idx2biz  = {v: k for k, v in biz2idx.items()}
 
-        # Registrar ítems vistos por usuario (para excluirlos en inferencia)
+        # Registrar ítems vistos por usuario para excluirlos en inferencia
         self._seen = (
             train_df.groupby("user_id")["business_id"]
             .apply(set).to_dict()
         )
 
-        # Construir dataset de Surprise
+        # Dataset de Surprise
         reader = Reader(rating_scale=(1, 5))
         data   = Dataset.load_from_df(
             train_df[["user_id", "business_id", "stars"]], reader
@@ -110,7 +105,7 @@ class SVDModel:
               candidate_ids: list[str],
               exclude_seen: bool = True) -> dict[str, float]:
         """
-        Devuelve scores para los candidatos, opcionalmente excluyendo
+        Devuelve scores para los candidatos, excluyendo
         los negocios que el usuario ya visitó.
         """
         if exclude_seen:
@@ -139,7 +134,6 @@ class ALSModel:
     """
     Filtrado colaborativo con ALS para feedback implícito.
     Combina señales de reviews + tips ponderadas.
-    Más robusto que SVD cuando los ratings son escasos.
     """
 
     def __init__(self):
@@ -157,7 +151,6 @@ class ALSModel:
             seen_df: pd.DataFrame) -> "ALSModel":
         """
         Entrena ALS sobre la matriz implícita usuario × negocio.
-        seen_df: reviews para registrar ítems vistos.
         """
         try:
             import implicit

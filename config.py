@@ -3,7 +3,7 @@ config.py
 =========
 Configuración central del sistema de recomendación híbrido Yelp.
 Todos los hiperparámetros y rutas se definen aquí para facilitar
-la sintonización sin tocar el código de los modelos.
+la sintonización.
 """
 
 from pathlib import Path
@@ -14,7 +14,7 @@ DATA_DIR   = BASE_DIR / "data"
 MODELS_DIR = BASE_DIR / "saved_models"
 MODELS_DIR.mkdir(exist_ok=True)
 
-# Archivos del dataset Yelp (colocar los JSON aquí)
+# Archivos del dataset Yelp 
 BUSINESS_FILE = DATA_DIR / "yelp_academic_dataset_business.json"
 REVIEW_FILE   = DATA_DIR / "yelp_academic_dataset_review.json"
 USER_FILE     = DATA_DIR / "yelp_academic_dataset_user.json"

@@ -29,7 +29,7 @@ logger = logging.getLogger(__name__)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Lectura de archivos JSON de Yelp (un objeto por línea)
+# Lectura de archivos JSON de Yelp 
 # ─────────────────────────────────────────────────────────────────────────────
 
 def _read_json_lines(filepath: Path, max_rows: Optional[int] = None) -> list[dict]:

@@ -14,10 +14,6 @@ Estrategia implementada: Post-filtering contextual.
 Ventaja: No requiere reentrenamiento cuando cambia el contexto,
 lo que lo hace ideal para inferencia en tiempo real vía API.
 
-Interfaz:
-  .fit(checkins_df, businesses_df)
-  .adjust_scores(scores, context, user_lat, user_lon, businesses_df)
-  .save(path) / .load(path)
 """
 
 import logging
@@ -103,7 +99,7 @@ class ContextAwareModel:
                     self.popularity[bid][franja] = {}
                 self.popularity[bid][franja][day_type] = row["count"] / total
 
-        # Hora de pico por negocio
+        # Hora pico por negocio
         peak = checkins.groupby(["business_id", "hour"])["checkin_datetime"].count()
         for bid in peak.index.get_level_values("business_id").unique():
             sub = peak.loc[bid]

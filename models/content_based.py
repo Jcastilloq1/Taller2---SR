@@ -10,14 +10,7 @@ Construye perfiles semánticos de negocios a partir de:
   - Tips (tip.json → text)
 
 Estrategia:
-  1. TF-IDF sobre el texto combinado de cada negocio (rápido, sin GPU)
-  2. Opcional: Sentence-BERT para embeddings densos más ricos
-
-Interfaz:
-  .fit(businesses_df, reviews_df, tips_df)
-  .get_similar(business_id, n) → list[business_id]
-  .score_for_user(user_id, candidate_ids, user_history) → dict[biz_id, float]
-  .save(path) / .load(path)
+  1. TF-IDF sobre el texto combinado de cada negocio 
 """
 
 import logging
