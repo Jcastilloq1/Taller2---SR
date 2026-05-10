@@ -22,8 +22,8 @@ CHECKIN_FILE  = DATA_DIR / "yelp_academic_dataset_checkin.json"
 TIP_FILE      = DATA_DIR / "yelp_academic_dataset_tip.json"
 
 # ── Filtros de datos ───────────────────────────────────────────────────────
-MIN_USER_REVIEWS     = 5    # usuarios con al menos N reseñas
-MIN_BUSINESS_REVIEWS = 5    # negocios con al menos N reseñas
+MIN_USER_REVIEWS     =  2   # usuarios con al menos N reseñas
+MIN_BUSINESS_REVIEWS = 2    # negocios con al menos N reseñas
 MAX_REVIEWS_LOAD     = None # None = cargar todo; int = subconjunto para dev
 
 # ── Split temporal ─────────────────────────────────────────────────────────
